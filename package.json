@@ -1,0 +1,59 @@
+{
+  "name": "exoress-boiler-plate",
+  "version": "1.0.0",
+  "description": "Express App bioler-plate",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "format": "prettier --config .prettierrc ./**/*.js --write",
+    "lint": "eslint --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "webrtc",
+    "chat",
+    "video",
+    "cal",
+    "audio",
+    "call",
+    "messaging",
+    "socket"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nielvid/node-express-boiler-plate.git"
+  },
+  "author": "Godson",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1",
+    "pretty-quick": "^3.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx}": [
+      "eslint"
+    ]
+  }
+}
