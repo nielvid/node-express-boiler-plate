@@ -9,7 +9,6 @@
     ],
     "extends": [
         "airbnb-base",
-        "eslint:recommended",
         "prettier"
     ],
     "parserOptions": {
@@ -25,22 +24,10 @@
         "no-unused-vars": "off",
         "import/extensions": [
             "error",
-            "ignorePackages",
             {
-                "js": "never",
-                "jsx": "never"
-
+                "js": "ignorePackages",
+                "mjs": "ignorePackages"
             }
         ]
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "extensions": [
-                    ".js",
-                    ".jsx"
-                ]
-            }
-        }
     }
 }
