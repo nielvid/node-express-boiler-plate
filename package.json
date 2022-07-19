@@ -16,12 +16,6 @@
     "*.js": "eslint --cache --fix",
     "*.--fix": "prettier --write . && git add -A ."
   },
-
-   "husky": {
-    "hooks": {
-      "pre-commit": "yarn run lint-staged"
-    }
-  },
   "keywords": [
     "webrtc",
     "chat",
