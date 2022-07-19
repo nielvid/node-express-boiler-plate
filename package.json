@@ -7,9 +7,20 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "format": "prettier --config .prettierrc ./**/*.js --write",
-    "lint": "eslint --fix",
+    "lint": "eslint ./**/*.ts",
+    "format": "eslint ./**/*.ts --fix",
+    "prepare": "husky install",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+   "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.--fix": "prettier --write . && git add -A ."
+  },
+
+   "husky": {
+    "hooks": {
+      "pre-commit": "yarn run lint-staged"
+    }
   },
   "keywords": [
     "webrtc",
@@ -32,7 +43,9 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
-    "socket.io": "^4.2.0"
+    "socket.io": "^4.2.0",
+     "typedi": "^0.10.0",
+     "rand-token": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
@@ -45,15 +58,7 @@
     "nodemon": "^2.0.12",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn run lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx}": [
-      "eslint"
-    ]
   }
+ 
+ 
 }
