@@ -4,7 +4,7 @@ import uid from 'rand-token'
 
 const storage = multer.diskStorage({
   destination(request, file, cb) {
-    cb(null, path.resolve('src/uploads'))
+    cb(null, path.resolve('uploads'))
   },
   filename(req, file, cb) {
     const token = uid(4)

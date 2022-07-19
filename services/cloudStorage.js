@@ -15,7 +15,7 @@ const s3 = new AWS.S3({
 const uploadFileToCloud = async (fileData) => {
   try {
     const fileContent = fs.readFileSync(
-      path.resolve(`src/uploads/${fileData.filename}`)
+      path.resolve(`uploads/${fileData.filename}`)
     )
     if (
       fileData.mimetype === 'image/jpeg' ||
@@ -30,10 +30,10 @@ const uploadFileToCloud = async (fileData) => {
       const image = await Image.load(fileContent)
       const img = image.resize({ width: 400 }) // resize the image, forcing a width of 200 pixels. The height is computed automatically to preserve the aspect ratio.
 
-      await img.save(`src/uploads/${fileData.filename}`)
+      await img.save(`uploads/${fileData.filename}`)
 
       const Content = fs.readFileSync(
-        path.resolve(`src/uploads/${fileData.filename}`)
+        path.resolve(`uploads/${fileData.filename}`)
       )
       const params = {
         Bucket: process.env.BUCKET_NAME || '',
@@ -54,10 +54,10 @@ const uploadFileToCloud = async (fileData) => {
       s3.upload(params, (err) => {
         console.log(err)
       })
-      // fs.unlinkSync(path.resolve(`src/uploads/${fileData.filename}`))
+      // fs.unlinkSync(path.resolve(`uploads/${fileData.filename}`))
     }
   } catch (error) {
-    // fs.unlinkSync(path.resolve(`src/uploads/${fileData.filename}`))
+    // fs.unlinkSync(path.resolve(`uploads/${fileData.filename}`))
     throw new Exception(error, 500)
   }
 }

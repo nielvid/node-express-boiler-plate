@@ -17,13 +17,13 @@ const UploadToStorage = async (req, res, next) => {
       return url
     })
 
-    Msg('media upload successful', { data: urls }, res)
+    Msg('media upload was successful', { data: urls }, res)
   } catch (error) {
     next(new Exception(error.message, error.status || 422))
   } finally {
     setTimeout(() => {
       fileData?.forEach((file) => {
-        fs.unlinkSync(path.resolve(`src/uploads/${file.filename}`))
+        fs.unlinkSync(path.resolve(`uploads/${file.filename}`))
       })
     }, 20000)
   }
