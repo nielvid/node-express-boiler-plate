@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
     const token = uid(4)
     const fileName = file.originalname.split('.')
     const ext = fileName[fileName.length - 1]
-    const filename = `name_${token}_${Date.now()}.${ext}`
+    const filename = `prefix_${token}_${Date.now()}.${ext}`
     cb(null, filename)
   },
 })
